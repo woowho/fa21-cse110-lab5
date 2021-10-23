@@ -31,6 +31,11 @@ function chooseHorn(){
     image.src = image_src;
     image.alt = image_alt;
     horn.src = horn_src;
+
+    if (select.value == "party-horn") {
+      const jsConfetti = new JSConfetti();
+      jsConfetti.addConfetti();
+    }
   })
 }
 
@@ -56,7 +61,6 @@ function soundHorn(){
   var horn = document.querySelector('audio');
   var slider = document.getElementById('volume');
   var select = document.getElementsByTagName('select')[0];
-  const jsConfetti = new JSConfetti()
   controls.addEventListener('click',function () {
     var src_array = horn.src.split('.');
     if (slider.value == 0 || src_array[src_array.length-1] != 'mp3'){
@@ -64,6 +68,7 @@ function soundHorn(){
     }
     horn.volume = slider.value / 100;
     if (select.value == "party-horn"){
+      const jsConfetti = new JSConfetti();
       jsConfetti.addConfetti();
     }
     horn.play();
